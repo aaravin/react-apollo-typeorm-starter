@@ -1,0 +1,27 @@
+{
+  "name": "instacraft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/src/server.ts",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build && cd .. && cd server && npm install",
+    "server": "node start-server.js",
+    "client": "node start-client.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaravin/instacraft.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaravin/instacraft/issues"
+  },
+  "homepage": "https://github.com/aaravin/instacraft#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
