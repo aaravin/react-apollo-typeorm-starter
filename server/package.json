@@ -5,7 +5,8 @@
   "main": "src/server.ts",
   "type": "module",
   "scripts": {
-    "start": "ts-node-dev --respawn src/server.ts",
+    "start": "ts-node src/server.ts",
+    "start:dev": "ts-node-dev --respawn src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
