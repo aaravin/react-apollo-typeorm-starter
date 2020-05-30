@@ -5,8 +5,8 @@
   "main": "server/src/server.ts",
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build && cd .. && cd server && npm install",
+    "build": "cd client && npm run build && cd .. && cd server && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build && cd .. && cd server && npm install && npm run build",
     "server": "node start-server.js",
     "client": "node start-client.js",
     "test": "echo \"Error: no test specified\" && exit 1"
