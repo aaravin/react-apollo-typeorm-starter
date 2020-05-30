@@ -20,7 +20,7 @@ const server = async () => {
       synchronize: true,
       logging: false,
       extra: {
-        ssl: true,
+        ssl: false,
       },
       entities: ['dist/entity/*.*'],
     };
