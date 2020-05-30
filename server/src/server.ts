@@ -1,4 +1,4 @@
-import 'dotenv/config';
+// import 'dotenv/config';
 import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
@@ -52,7 +52,7 @@ const server = async () => {
 
   apolloServer.applyMiddleware({ app, path: '/graphql' });
 
-  app.get('/*', (req, res) => {
+  app.get('/*', (_, res) => {
     res.sendFile(path.resolve(__dirname, '../../client/build/index.html'));
   });
 

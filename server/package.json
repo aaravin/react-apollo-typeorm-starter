@@ -2,10 +2,10 @@
   "name": "instacraft-server",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
-  "type": "module",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "build": "webpack --config ./webpack.config.js --mode production",
     "start:dev": "ts-node-dev --respawn src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,11 +17,20 @@
     "@types/graphql": "^14.5.0",
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/node": "^14.0.5",
+    "@types/webpack": "^4.41.13",
     "clean-webpack-plugin": "^3.0.0",
     "graphql-depth-limit": "^1.1.0",
     "graphql-import": "^1.0.2",
     "graphql-import-node": "0.0.4",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "source-map-loader": "^1.0.0",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "type-graphql": "^1.0.0-rc.2",
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "apollo-server-express": "^2.13.1",
@@ -32,10 +41,6 @@
     "graphql": "^15.0.0",
     "path": "^0.12.7",
     "pg": "^8.2.1",
-    "type-graphql": "^1.0.0-rc.2",
-    "ts-node": "^8.10.1",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typeorm": "^0.2.25",
-    "typescript": "^3.9.3"
+    "typeorm": "^0.2.25"
   }
 }
