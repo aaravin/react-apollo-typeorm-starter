@@ -27,7 +27,17 @@
     <title>React App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="//connect.facebook.net/en_US/sdk.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '630229384236354',
+          cookie     : true,            // Enable cookies to allow the server to access the session.
+          xfbml      : true,            // Parse social plugins on this webpage.
+          version    : 'v7.0'           // Use this Graph API version for this call.
+        });
+      };
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

@@ -1,0 +1,25 @@
+.LoginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+button {
+  border: 2px solid #545454;
+  color: #545454;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #231F20;
+  color: #231F20;
+}
+
+.fa-facebook-square {
+  color: #0E8CF1;
+  margin-right: 10px;
+}
