@@ -1,9 +1,15 @@
-import { Resolver, Query } from 'type-graphql';
+import { Resolver, Query, Ctx } from 'type-graphql';
+import { User } from '../entities/User';
+
+interface ContextType {
+  user: User
+}
 
 @Resolver()
 export class UserResolver {
   @Query(() => String)
-  async hello() {
-    return 'hello11';
+  async hello(@Ctx() context: ContextType) {
+    const email = context.user && context.user.email;
+    return email;
   }
 }

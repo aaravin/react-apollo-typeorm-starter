@@ -16,6 +16,7 @@ import {
 } from 'typeorm';
 import { createSchema } from './utils/createSchema';
 import { authRouter } from './routers/auth.router';
+import { authenticate } from './utils/authUtils';
 
 const server = async () => {
   let connectionOptions: ConnectionOptions;
@@ -40,7 +41,13 @@ const server = async () => {
 
   const apolloServer = new ApolloServer({
     schema,
-    context: ({ req, res }) => ({ req, res })
+    context: async ({ req }) => {
+      const user = await authenticate(req);
+      if (!user) {
+        throw new Error('Authentication failed');
+      }
+      return { user };
+    }
   });
 
   const app = express();

@@ -42,7 +42,7 @@ authRouter.post('/facebook', passport.authenticate('facebook-token'), (req: any,
     return res.send(400);
   }
   req.auth = {
-    email: req.user.email
+    email: req.user._json.email
   };
   next();
 }, generateToken, sendToken);
