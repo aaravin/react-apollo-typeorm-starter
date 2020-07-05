@@ -1,4 +1,4 @@
-import { Resolver, Query, Arg, Mutation,  ObjectType, Field } from 'type-graphql';
+import { Resolver, Query, Arg, Mutation} from 'type-graphql';
 import {
   genSignedUrl,
 } from '../utils/uploadUtils';
