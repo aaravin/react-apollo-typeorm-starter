@@ -16,4 +16,8 @@ export class User extends BaseEntity {
   @Field()
   @Column()
   email: string;
+
+  @Field()
+  @Column({ nullable: true })
+  profileImageURL: string;
 }

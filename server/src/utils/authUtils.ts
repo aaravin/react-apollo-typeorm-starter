@@ -6,9 +6,9 @@ const createToken = (auth: any) => {
   return jwt.sign({
     email: auth.email
   }, process.env.JWT_SECRET || '',
-  {
-    expiresIn: 60 * 120
-  });
+    {
+      expiresIn: 60 * 120
+    });
 };
 
 const generateToken = (req: any, _: any, next: any) => {

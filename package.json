@@ -8,6 +8,7 @@
     "start:dev": "concurrently \"npm run server:dev\" \"npm run client\"",
     "build": "cd client && npm run build && cd .. && cd server && npm run build",
     "heroku-postbuild": "cd client && npm install && npm run build && cd .. && cd server && npm install && npm run build",
+    "install-all": "npm install && cd client && npm install && cd .. && cd server && npm install",
     "server": "node start-server.js",
     "client": "node start-client.js",
     "server:dev": "node start-server-dev.js",
@@ -24,8 +25,10 @@
   },
   "homepage": "https://github.com/aaravin/instacraft#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "concurrently": "^5.2.0",
     "ts-node": "^8.10.2",
+    "typeorm-naming-strategies": "^1.1.0",
     "typescript": "^3.9.3"
   }
 }

@@ -1,0 +1,18 @@
+runtime: nodejs
+env: flex
+
+# Google Cloud Config
+# https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+automatic_scaling:
+    min_num_instances: 1
+    max_num_instances: 10
+    cool_down_period_sec: 60
+    cpu_utilization:
+        target_utilization: 0.80
+
+beta_settings:
+  cloud_sql_instances: instacraft-278819:us-west2:instacraft-prod
