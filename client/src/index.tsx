@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import './misc/fontawesome';
 
+const cache = new InMemoryCache();
+
 const client = new ApolloClient({
-  uri: '/graphql',
+  cache,
+  request: operation => {
+    const token = localStorage.getItem('instacraft_token');
+    operation.setContext({
+      headers: {
+        auth: token
+      }
+    })
+  },
 });
 
 ReactDOM.render(

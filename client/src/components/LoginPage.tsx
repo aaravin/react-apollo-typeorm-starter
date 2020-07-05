@@ -39,22 +39,6 @@ const LoginPage = () => {
             console.log('LOGIN ERROR', res);
           }
         });
-        // fetch('auth/facebook', {
-        //   method: 'POST',
-        //   headers: {
-        //     'access_token': res.authResponse.accessToken
-        //   }
-        // }).then(res => {
-        //   if (res.status === 200) {
-        //     const token = res.headers.get('access_token');
-        //     if (token) {
-        //       localStorage.setItem('instacraft_token', token);
-        //       history.push('/');
-        //     }
-        //   } else {
-        //     console.log('LOGIN ERROR', res);
-        //   }
-        // });
       }
     }, {scope: 'public_profile,email'});
   }
