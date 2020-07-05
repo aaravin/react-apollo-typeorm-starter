@@ -3,7 +3,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import history from '../misc/history';
 import './LoginPage.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
 
 const LoginPage = () => {
   const handleLoginClick = () => {
