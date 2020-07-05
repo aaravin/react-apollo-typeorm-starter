@@ -7,7 +7,7 @@ const LoginPage = () => {
   const handleLoginClick = () => {
     FB.login(res => {
       if (res.authResponse) {
-        fetch('auth/facebook', {
+        fetch('/auth/facebook', {
           method: 'POST',
           headers: {
             'access_token': res.authResponse.accessToken

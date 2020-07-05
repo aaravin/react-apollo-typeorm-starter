@@ -17,7 +17,6 @@ const generateToken = (req: any, _: any, next: any) => {
 };
 
 const sendToken = (req: any, res: any) => {
-  console.log('SENT TOKEN', req.token);
   res.setHeader('access_token', req.token);
   res.status(200).send(req.auth);
 };

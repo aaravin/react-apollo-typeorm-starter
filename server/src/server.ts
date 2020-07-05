@@ -2,9 +2,12 @@ import 'dotenv/config';
 import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import https from 'https';
+import fs from 'fs';
+import axios from 'axios';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import session from 'express-session';
+import cookieSession from 'cookie-session';
 import compression from 'compression';
 import cors from 'cors';
 import passport from 'passport';
@@ -60,10 +63,9 @@ const server = async () => {
 
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(session({
+  app.use(cookieSession({
     secret: process.env.SESSION_SECRET || '',
-    resave: false,
-    saveUninitialized: false
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
   }));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -74,15 +76,30 @@ const server = async () => {
 
   app.use('/auth', authRouter);
 
+  app.get('/ig_posts', (req, res) => {
+    if (req.session) {
+      const accessToken = req.session.ig_access_token;
+      axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`)
+        .then(response => {
+          res.send(response.data);
+        })
+    } else {
+      res.status(401);
+    }
+  });
+
   apolloServer.applyMiddleware({ app, path: '/graphql' });
 
   app.get('/', (_, res) => {
     res.sendFile(path.resolve(__dirname, '../../client/build/index.html'));
   });
 
-  app.listen(
+  https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  }, app).listen(
     port,
-    () => console.log(`Apollo Server now running on http://localhost:${port}/graphql`)
+    () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`)
   );
 }
 
