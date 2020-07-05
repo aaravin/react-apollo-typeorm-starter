@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import https from 'https';
@@ -15,10 +14,11 @@ import path from 'path';
 import {
   createConnection,
   getConnectionOptions,
-  ConnectionOptions
+  // eslint-disable-next-line no-unused-vars
+  ConnectionOptions,
 } from 'typeorm';
-import { createSchema } from './utils/createSchema';
-import { authRouter } from './routers/auth.router';
+import createSchema from './utils/createSchema';
+import authRouter from './routers/auth.router';
 import { authenticate } from './utils/authUtils';
 
 const server = async () => {
@@ -35,7 +35,7 @@ const server = async () => {
     };
     Object.assign(connectionOptions, { url: process.env.DATABASE_URL });
   } else {
-    connectionOptions = await getConnectionOptions(); 
+    connectionOptions = await getConnectionOptions();
   }
 
   await createConnection(connectionOptions);
@@ -50,7 +50,7 @@ const server = async () => {
         throw new Error('Authentication failed');
       }
       return { user };
-    }
+    },
   });
 
   const app = express();
@@ -80,9 +80,9 @@ const server = async () => {
     if (req.session) {
       const accessToken = req.session.ig_access_token;
       axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`)
-        .then(response => {
+        .then((response) => {
           res.send(response.data);
-        })
+        });
     } else {
       res.status(401);
     }
@@ -94,20 +94,15 @@ const server = async () => {
     res.sendFile(path.resolve(__dirname, '../../client/build/index.html'));
   });
 
-  if (process.env.NODE_ENV === 'production') {
-    app.listen(
-      port,
-      () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`)
-    );
-  } else {
-    https.createServer({
-      key: fs.readFileSync('server.key'),
-      cert: fs.readFileSync('server.cert')
-    }, app).listen(
-      port,
-      () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`)
-    );
-  }
-}
+  const httpServer = process.env.NODE_ENV === 'production' ? app : https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert'),
+  }, app);
+
+  httpServer.listen(
+    port,
+    () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`),
+  );
+};
 
 server();
