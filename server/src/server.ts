@@ -94,13 +94,20 @@ const server = async () => {
     res.sendFile(path.resolve(__dirname, '../../client/build/index.html'));
   });
 
-  https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-  }, app).listen(
-    port,
-    () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`)
-  );
+  if (process.env.NODE_ENV === 'production') {
+    app.listen(
+      port,
+      () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`)
+    );
+  } else {
+    https.createServer({
+      key: fs.readFileSync('server.key'),
+      cert: fs.readFileSync('server.cert')
+    }, app).listen(
+      port,
+      () => console.log(`Apollo Server now running on https://localhost:${port}/graphql`)
+    );
+  }
 }
 
 server();
