@@ -82,7 +82,8 @@ const server = async () => {
       axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token=${accessToken}`)
         .then((response) => {
           res.send(response.data);
-        });
+        })
+        .catch((e) => console.log('ERROR FETCHING POSTS', e));
     } else {
       res.status(401);
     }

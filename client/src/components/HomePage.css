@@ -2,7 +2,33 @@
   margin: 0;
   height: 100%;
   display: flex;
+  flex-direction: column;
   flex: 1;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px 20px;
+}
+
+.fetch-posts-button {
+  width: 100%;
+  background-color: #0094F6;
+  color: #FFFFFF;
+  border: none;
+  height: 30px;
+  font-size: 14px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.fetch-posts-button:hover {
+  background-color: #1877F2;
+}
+
+.home-page-content {
+  flex: 1;
+  display: flex;
 }

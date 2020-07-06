@@ -17,7 +17,8 @@
   align-items: center;
   padding: 10px;
   justify-content: space-between;
-  width: 1012px;
+  width: 100%;
+  max-width: 1012px;
   margin: 0 auto;
 }
 
@@ -37,8 +38,10 @@ span {
 }
 
 .app-content {
-  width: 1012px;
+  max-width: 1012px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   height: 100%;
+  justify-content: center;
 }

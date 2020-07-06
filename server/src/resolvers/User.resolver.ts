@@ -8,7 +8,7 @@ interface ContextType {
 @Resolver()
 export default class UserResolver {
   @Query(() => String)
-  async hello(@Ctx() context: ContextType) {
+  async me(@Ctx() context: ContextType) {
     const email = context.user && context.user.email;
     return email;
   }

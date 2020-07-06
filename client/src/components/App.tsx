@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   handleLogoutClick = () => {
-    FB.getLoginStatus((response) => {
+    FB.getLoginStatus(response => {
       if (response.status === 'connected') {
         FB.logout((res) => {
           localStorage.removeItem('instacraft_token');
