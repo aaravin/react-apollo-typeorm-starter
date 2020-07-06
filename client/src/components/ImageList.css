@@ -1,10 +1,22 @@
 .ImageList {
-  /* display: flex; */
+  padding: 5px 0;
 }
 
-.post-image {
+/* .image-container {
+  position: relative;
+  padding-bottom: 75%;
   display: inline-block;
   width: 33%;
-  height: 120px;
-  padding: 10px 0;
+  height: 0;
+} */
+
+.post-image {
+  width: 33.33%;
+  height: auto;
+  padding: 5px 4px;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
 }
