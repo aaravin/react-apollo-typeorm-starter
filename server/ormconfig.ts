@@ -10,5 +10,5 @@ export = {
   synchronize: true,
   logging: false,
   entities: ['src/entities/*.*'],
-  namingStrategy: new SnakeNamingStrategy()
+  namingStrategy: new SnakeNamingStrategy(),
 }
