@@ -60,7 +60,7 @@
     "passport-instagram": "^1.0.0",
     "path": "^0.12.7",
     "pg": "^8.2.1",
-    "qs": "^6.9.4",
+    "qs": "^6.9.7",
     "type-graphql": "^1.0.0-rc.2",
     "typeorm": "^0.2.25",
     "typeorm-naming-strategies": "^1.1.0",
