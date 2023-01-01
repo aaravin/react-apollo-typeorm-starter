@@ -22,7 +22,7 @@
     "graphql-import": "^1.0.2",
     "graphql-import-node": "0.0.4",
     "nodemon": "^2.0.4",
-    "ts-loader": "^7.0.5",
+    "ts-loader": "^9.4.2",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.9.3"
